@@ -1,0 +1,45 @@
+name: 🚀 Deploy & Quality Assurance
+
+on: 
+   push:  
+        bransh:
+        - main
+        workflow_dispatch: 
+
+   permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+   concurrency:
+     group: ${{ github.workflow }}-${{ github.ref }}
+     cance1-in-progress: true 
+
+   jobs:
+     deploy:
+       name: 🚀 Deploy to Github pages
+       cuns-on: ubuntu-latest
+       if: github.ref == 'refs/heads/main'
+       outputs: 
+         page_url: ${{ steps.deployment.outputs.page_url }}
+
+       environment:
+         namegithub-pages
+         url: ${{ steps.deployment.outputs.page_url }}
+
+       steps:
+         - name: 📤 Checkout code  
+           uses: actions/checkout@v4
+
+         - name: 📄 Setup pages
+           uses: actions/configure-pages@v4
+
+         - name: 📦 Upload artifact
+           uses: actions/upload-pages-artifact@v3
+           with:
+             path: "."
+
+         - name: 🚀 Deploy to Github pages
+           id: deployment
+           uses: actions/deploy-pages@v4  
+
