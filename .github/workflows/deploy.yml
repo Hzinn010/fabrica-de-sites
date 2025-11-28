@@ -12,20 +12,20 @@ on:
     id-token: write
 
    concurrency:
-     group:${{ github.workflow }}-${{ github.ref }}
-     cance1-in-progress:true 
+     group: ${{ github.workflow }}-${{ github.ref }}
+     cance1-in-progress: true
 
    jobs:
      deploy:
-       name: 🚀 Deploy to Github pages
+       name: 🚀 Deploy & Github pages
        cuns-on: ubuntu-latest
        if: github.ref == 'refs/heads/main'
        outputs: 
-         page_url:${{ steps.deployment.outputs.page_url }}
+         page_url: ${{ steps.deployment.outputs.page_url }}
 
        environment:
-         namegithub-pages
-         url:${{ steps.deployment.outputs.page_url }}
+         name: github-pages
+         url: ${{ steps.deployment.outputs.page_url }}
 
        steps:
          - name: 📤 Checkout code  
@@ -39,7 +39,7 @@ on:
            with:
              path: "."
 
-         - name: 🚀 Deploy to Github pages
+         - name: 🚀 Deploy to Github Pages
            id: deployment
            uses: actions/deploy-pages@v4
 
