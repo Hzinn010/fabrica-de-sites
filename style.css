@@ -1,12 +1,13 @@
+
 .navbar {
     overflow: hidden;
     background-color: darkolivegreen;
+    border-radius: 20px;
 }
 .navbar a {
     float: left;
     display: block;
     color: aliceblue;
-    text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     
@@ -14,4 +15,30 @@
 .navbar a:hover {
     background-color: aliceblue;
     color: black;
+   
+}
+
+
+.msg {
+  background-color: rgb(255, 255, 255);
+}
+.name {
+    color: blue;
+}
+.email {
+    color: blue;
+}.assunto {
+    color: blue;
+}
+.opcao {
+    color: crimson;
+}
+#mensagem {
+    background-color: rgb(201, 201, 199);
+}
+button {
+    background-color: rgba(64, 127, 191, 1);
+    border: none;
+    border-radius: 0;
+    color: aliceblue;
 }
